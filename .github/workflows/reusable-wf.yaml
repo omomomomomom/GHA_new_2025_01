@@ -1,5 +1,5 @@
 name: sample to check
-on:[push]
+on: [push]
 jobs:
   job_01:
     runs-on: ubuntu-latest
