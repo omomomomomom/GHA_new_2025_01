@@ -6,10 +6,10 @@ on:
         description: Mention the name
         required: true
         type: string
+    secrets:
       secrete-token:
         description: Mention the secrete token
         required: false
-        type: string
 jobs:
   job_01:
      runs-on: ubuntu-latest
