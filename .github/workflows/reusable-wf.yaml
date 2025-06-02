@@ -1,8 +1,25 @@
-name: sample to check
-on: [push]
+name: reusable wf
+on:
+  workflow_call:
+    inputs:
+      name:
+        description: Mention the name
+        required: true
+        type: string
+      secrete-token:
+        description: Mention the secrete token
+        required: false
+        type: string
 jobs:
   job_01:
-    runs-on: ubuntu-latest
-    steps:
-      - name: step 01
-        run: echo "hello new wf"
+     runs-on: ubuntu-latest
+     steps:
+      - uses: actions/checkout@v3
+      -  run: ls -a
+  job_02:   
+      runs-on: ubuntu-latest
+      steps:        
+        - run: echo "name is ${{ inputs.name }}"
+        - run: echo "secrete token is ${{ inputs.secrete-token }}"
+        - run: echo "${{ toJson(github) }}"
+    
