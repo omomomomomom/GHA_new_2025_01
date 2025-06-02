@@ -1,1 +1,8 @@
-
+name: sample to check
+on:[push]
+jobs:
+  job_01:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step 01
+        run: echo "hello new wf"
