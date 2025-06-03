@@ -1,0 +1,21 @@
+name: caching the artifact
+on: [push ]
+jobs:
+  job_01:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm install
+      - name: using axios
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const randomJokeAPI = 'https://official-joke-api.appspot.com/random_joke';
+            const axios = require('axios');
+            await axios.get(randomJokeAPI)
+              .then(response => {
+                console.log(response.data);
+              })
+              .catch(error => {
+                console.error('Error fetching joke:', error);
+              });
