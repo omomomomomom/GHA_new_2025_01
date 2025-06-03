@@ -26,7 +26,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - run: npm install
       - run: |
-          echo "${{steps.cache-hit-id.outputs.cache-hit}}"
+          echo "${{toJson(steps.cache-hit-id.outputs)}}"
           cd ~/.npm
           ls -a ~/.npm/_logs
       - name: fetch a random joke
