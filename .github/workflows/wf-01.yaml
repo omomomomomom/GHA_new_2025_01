@@ -18,7 +18,7 @@ jobs:
           echo "Clearing cache..."
           rm -rf $HOME/.npm
       - name: cache node modules
-        if: ${{ github.event.inputs.clear_cache !== 'true' }}
+        if: ${{ github.event.inputs.clear_cache == 'false' }}
         id: cache-hit-id
         uses: actions/cache@v3
         with:
