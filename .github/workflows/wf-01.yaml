@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: clear cache
+        if: ${{ github.event.inputs.clear_cache == 'true' }}
+        run: |
+          echo "Clearing cache..."
+          rm -rf $HOME/.npm
       - name: cache node modules
         id: cache-hit-id
         uses: actions/cache@v3
@@ -20,11 +25,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - run: echo "${{steps.cache-hit-id}}"
       - run: npm install
-      - name: clear cache
-        if : ${{ github.event.inputs.clear_cache == 'true' }}
-        run: |
-          echo "Clearing cache..."
-          rm -rf ~/.npm
       - name: fetch a random joke
         uses: actions/github-script@v7
         with:
