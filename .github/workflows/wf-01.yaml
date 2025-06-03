@@ -36,7 +36,7 @@ jobs:
         if: always()
         with:
           name: test-results
-          paths: coverage
+          path: coverage
           retention-days: 1
       - name: fetch a random joke
         uses: actions/github-script@v7
