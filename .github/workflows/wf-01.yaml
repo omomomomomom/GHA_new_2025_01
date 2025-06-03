@@ -24,6 +24,7 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - run: npm install
       - run: |
           echo "${{steps.cache-hit-id.outputs.cache-hit}}"
           cd ~/.npm
