@@ -20,8 +20,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - run: echo "${{steps.cache-hit-id}}"
       - run: npm install
-      - name: using axios
-       # need step to clear cache
       - name: clear cache
         if : ${{ github.event.inputs.clear_cache == 'true' }}
         run: |
