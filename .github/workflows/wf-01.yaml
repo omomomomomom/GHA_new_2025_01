@@ -23,12 +23,12 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - run: npm install
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}    
       - run: |
           echo "${{toJson(steps.cache-hit-id.outputs)}}"
           cd ~/.npm
           ls -a ~/.npm/_logs
+      - run: npm install
       - name: run tests
         run: npm test
       - name: upload artifact
@@ -37,7 +37,7 @@ jobs:
         with:
           name: test-results
           path: coverage
-          retention-days: 1
+          retention-days: 10
       - name: fetch a random joke
         uses: actions/github-script@v7
         with:
