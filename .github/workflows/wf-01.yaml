@@ -11,7 +11,7 @@ jobs:
         with:
           path: ~/.npm
           key: npm-cache
-      - run: echo "${{steps.cache-hit-id}}
+      - run: echo "${{steps.cache-hit-id}}"
       - run: npm install
       - name: using axios
         uses: actions/github-script@v7
