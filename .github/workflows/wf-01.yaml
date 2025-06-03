@@ -6,10 +6,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: cache node modules
+        id: cache-hit-id
         uses: actions/cache@v3
         with:
           path: ~/.npm
           key: npm-cache
+      - run: echo "${{steps.cache-hit-id}}
       - run: npm install
       - name: using axios
         uses: actions/github-script@v7
