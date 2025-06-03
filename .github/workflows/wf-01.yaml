@@ -24,8 +24,7 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - run: echo "${{steps.cache-hit-id}}"
-      - run: npm install
+      - run: echo "Cache hit: ${{ steps.cache-hit-id.outputs.cache-hit }}"
       - name: fetch a random joke
         uses: actions/github-script@v7
         with:
